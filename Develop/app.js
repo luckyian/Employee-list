@@ -9,10 +9,86 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const teamMember = [];
+
+
 
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+inquirer.prompt([
+    {
+      type: "input",
+      message: "What is your name?",
+      name: "name"
+    },
+    {
+      type: "list",
+      message: "What is your role?",
+      name: "role",
+      choices: [
+        "Manager", 
+        "Engineer", 
+        "Intern"
+      ]
+    },
+    {
+      type: "input",
+      message: "What is your id?",
+      name: "id"
+    }
+  ]).then(function(data) {
+    if (this.role === "Manager") {
+        inquirer.prompt([
+            {
+              type: "input",
+              message: "What is your office number?",
+              name: "officeNumber"
+            }
+            .then(function(managerData) {
+              const manager = new Manager(data.name, data.id, data.email, mangerData.OfficeNumber);
+            teamMember.push(manager);
+           
+            })
+
+    }
+    else if (this.role === "Engineer") {
+        inquirer.prompt([
+            {
+              type: "input",
+              message: "What is your GitHub username?",
+              name: "name"
+            }
+            .then(function(engineerData) {})
+
+    }
+
+    else if (this.role === "Intern" ) {
+        inquirer.prompt([
+            {
+              type: "input",
+              message: "What is your name?",
+              name: "name"
+            }
+            .then(function(data) {})
+
+    }
+
+    else (
+      // Add no more team members, generate output file
+      fs.writeFile(outputPath, render(teamMember), function (err) {
+
+        if (err) {
+
+            return console.log(err);
+        }
+
+        console.log("Success!");
+    )
+
+   
+  
+    });
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
