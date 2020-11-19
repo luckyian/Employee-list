@@ -11,7 +11,18 @@ class Intern extends Employee {
 
     super(name, id, email);
     this.getRole = function () {
-
+      inquirer.prompt([
+        {
+          type: "input",
+          message: "What is school do you attend?",
+          name: "school"
+        }
+      ])
+        .then(function (InternData) {
+          const intern = new Intern(data.name, data.id, data.email, InternData.school);
+          teamMember.push(intern);
+          
+        })
     };
   };
 }

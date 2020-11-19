@@ -9,7 +9,19 @@ class Manager extends Employee {
     this.email = email;
 
     super(name, id, email);
-    this.getRole = function () {
+    this.getRole = function () { 
+      inquirer.prompt([
+      {
+        type: "input",
+        message: "What is your office number?",
+        name: "officeNumber"
+      }
+    ])
+      .then(function (managerData) {
+        const manager = new Manager(data.name, data.id, data.email, mangerData.officeNumber);
+        teamMember.push(manager);
+        
+      })
 
     };
   };
