@@ -10,10 +10,57 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const teamMember = [];
-function manager();
+function name() {
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What is your name?",
+      name: "name",
+    },
+    {
+      type: "input",
+      message: "What is your id?",
+      name: "id"
+    },
+    {
+      type: "input",
+      message: "What is your email?",
+      name: "email"
+    },
+    {
+      type: "list",
+      message: "What is your role?",
+      name: "role",
+      choices: [
+        "Manager",
+        "Engineer",
+        "Intern"
+      ]
+    }
+
+    // Add the rest of the questions related to manager
+  ])
+    .then(function (data) {
+      const employee = new Employee(data.name, data.id, data.email);
+      teamMember.push(employee);
+      inquirer.prompt(
+        {
+        type: "list",
+        message: "What is your role?",
+        name: "role",
+        choices: [
+          "Manager",
+          "Engineer",
+          "Intern"
+        ]
+      }).then(
+
+      )
+    })
+}
 
 
-function output(){
+function output() {
   fs.writeFile(outputPath, render(teamMember), function (err) {
 
     if (err) {
@@ -32,42 +79,44 @@ function output(){
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-inquirer.prompt([
-  {
-    type: "list",
+function init() {
+  inquirer.prompt([
+    {
+      type: "list",
       message: "What is your role?",
       name: "role",
       choices: [
-        "Manager", 
-        "Engineer", 
+        "Manager",
+        "Engineer",
         "Intern"
       ]
     }
-  
-])
-  .then(function (data) {
-    if (this.role === "Manager") {
-      manager();
-    }
+
+  ])
+    .then(function (data) {
+      if (data.role === "Manager") {
+        manager();
+
+      }
 
 
-    else if (this.role === "Engineer") {
-      engineer();
-    }
+      else if (data.role === "Engineer") {
+        engineer();
+      }
 
-    else if (this.role === "Intern") {
-      intern();
+      else if (data.role === "Intern") {
+        intern();
 
-    }
-  
+      }
 
-    else {
-      // Add no more team members, generate output file
-      output();
-    }
-  })
-  
-    
+
+      else {
+        // Add no more team members, generate output file
+        output();
+      }
+    })
+}
+init();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
