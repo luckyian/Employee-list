@@ -33,6 +33,10 @@ function name() {
     .then(function (data) {
       const employee = new Employee(data.name, data.id, data.email);
       teamMember.push(employee);
+     
+    })
+
+    function getRole(){
       inquirer.prompt(
         {
           type: "list",
@@ -59,54 +63,54 @@ function name() {
 
           }
 
-      
+
+        })
+    }
+
+
+  function output() {
+    fs.writeFile(outputPath, render(teamMember), function (err) {
+
+      if (err) {
+
+        return console.log(err);
+      }
+
+      console.log("Success!");
     })
-}
 
 
-function output() {
-  fs.writeFile(outputPath, render(teamMember), function (err) {
-
-    if (err) {
-
-      return console.log(err);
-    }
-
-    console.log("Success!");
-  })
-
-
-}
+  }
 
 
 
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-function init() {
-  inquirer.prompt([
-    {
-      type: "list",
-      message: "What is your role?",
-      name: "role",
-      choices: [
-        "Manager",
-        "Engineer",
-        "Intern"
-      ]
-    }
+  // Write code to use inquirer to gather information about the development team members,
+  // and to create objects for each team member (using the correct classes as blueprints!)
+  function init() {
+    inquirer.prompt([
+      {
+        type: "list",
+        message: "What is your role?",
+        name: "role",
+        choices: [
+          "Manager",
+          "Engineer",
+          "Intern"
+        ]
+      }
 
-  ])
-    .then(
+    ])
+      .then()
      
 
-
-      else {
-        // Add no more team members, generate output file
-        output();
-      }
-    })
-}
+  }
+    //   else {
+    //       // Add no more team members, generate output file
+    //       output();
+    //     }
+    // })
+// }
 init();
 
 // After the user has input all employees desired, call the `render` function (required
