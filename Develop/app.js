@@ -26,36 +26,40 @@ function name() {
       type: "input",
       message: "What is your email?",
       name: "email"
-    },
-    {
-      type: "list",
-      message: "What is your role?",
-      name: "role",
-      choices: [
-        "Manager",
-        "Engineer",
-        "Intern"
-      ]
     }
 
-    // Add the rest of the questions related to manager
+    // Add the rest of the questions related to employee
   ])
     .then(function (data) {
       const employee = new Employee(data.name, data.id, data.email);
       teamMember.push(employee);
       inquirer.prompt(
         {
-        type: "list",
-        message: "What is your role?",
-        name: "role",
-        choices: [
-          "Manager",
-          "Engineer",
-          "Intern"
-        ]
-      }).then(
+          type: "list",
+          message: "What is your role?",
+          name: "role",
+          choices: [
+            "Manager",
+            "Engineer",
+            "Intern"
+          ]
+        }).then(function (data) {
+          if (data.role === "Manager") {
+            manager();
 
-      )
+          }
+
+
+          else if (data.role === "Engineer") {
+            engineer();
+          }
+
+          else if (data.role === "Intern") {
+            intern();
+
+          }
+
+      
     })
 }
 
@@ -93,21 +97,8 @@ function init() {
     }
 
   ])
-    .then(function (data) {
-      if (data.role === "Manager") {
-        manager();
-
-      }
-
-
-      else if (data.role === "Engineer") {
-        engineer();
-      }
-
-      else if (data.role === "Intern") {
-        intern();
-
-      }
+    .then(
+     
 
 
       else {
