@@ -10,21 +10,85 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const teamMember = [];
-function name() {
+
+function init() {
+
+function startUp () {
+inquirer.prompt(
+{
+ type: "input",
+ message: "What is your manager's name?",
+ name: "firstManager"
+
+}
+
+).then(function(data) {
+  newEmp();
+}
+
+  )
+
+
+}
+function manager(){
   inquirer.prompt([
     {
       type: "input",
-      message: "What is your name?",
+      message: "What is your office number?",
+      name: "officeNumber"
+    }
+  ])
+    .then(function (managerData) {
+      const manager = new Manager(data.name, data.id, data.email, mangerData.officeNumber);
+      teamMember.push(manager);
+      
+    })
+
+}
+function intern(){
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What is school do you attend?",
+      name: "school"
+    }
+  ])
+    .then(function (InternData) {
+      const intern = new Intern(data.name, data.id, data.email, InternData.school);
+      teamMember.push(intern);
+      
+    })
+
+}
+function engineer(){
+  inquirer.prompt(
+    {
+      type: "input",
+      message: "What is your github user name?",
+      name: "github"
+    }
+  )
+    .then(function (EngineerData) {
+      const engineer = new Engineer(data.name, data.id, data.email, EngineerData.github);
+      teamMember.push(engineer);
+      
+    })
+}
+function newEmp() {
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the employee's name?",
       name: "name",
     },
     {
       type: "input",
-      message: "What is your id?",
+      message: "What is the employee's id?",
       name: "id"
     },
     {
       type: "input",
-      message: "What is your email?",
+      message: "What is the employee's email?",
       name: "email"
     }
 
@@ -33,39 +97,39 @@ function name() {
     .then(function (data) {
       const employee = new Employee(data.name, data.id, data.email);
       teamMember.push(employee);
-     
+      getRole();
     })
+  }
+  function getRole() {
+    inquirer.prompt(
+      {
+        type: "list",
+        message: "What is the employee's role?",
+        name: "role",
+        choices: [
+          "Manager",
+          "Engineer",
+          "Intern"
+        ]
+      }).then(function (data) {
+        if (data.role === "Manager") {
+          manager();
 
-    function getRole(){
-      inquirer.prompt(
-        {
-          type: "list",
-          message: "What is your role?",
-          name: "role",
-          choices: [
-            "Manager",
-            "Engineer",
-            "Intern"
-          ]
-        }).then(function (data) {
-          if (data.role === "Manager") {
-            manager();
-
-          }
-
-
-          else if (data.role === "Engineer") {
-            engineer();
-          }
-
-          else if (data.role === "Intern") {
-            intern();
-
-          }
+        }
 
 
-        })
-    }
+        else if (data.role === "Engineer") {
+          engineer();
+        }
+
+        else if (data.role === "Intern") {
+          intern();
+
+        }
+
+
+      })
+  }
 
 
   function output() {
@@ -87,7 +151,7 @@ function name() {
 
   // Write code to use inquirer to gather information about the development team members,
   // and to create objects for each team member (using the correct classes as blueprints!)
-  function init() {
+ 
     inquirer.prompt([
       {
         type: "list",
@@ -102,21 +166,21 @@ function name() {
 
     ])
       .then()
-     
+
 
   }
-    //   else {
-    //       // Add no more team members, generate output file
-    //       output();
-    //     }
-    // })
-// }
-init();
+  //   else {
+  //       // Add no more team members, generate output file
+  //       output();
+  //     }
+  // })
+  // }
+  init();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
-
+  render(teamMember);
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
