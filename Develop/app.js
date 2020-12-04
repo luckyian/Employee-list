@@ -17,7 +17,7 @@ function startUp () {
 inquirer.prompt(
 {
  type: "input",
- message: "What is your manager's name?",
+ message: "What is your team manager's name?",
  name: "firstManager"
 
 }

@@ -14,7 +14,7 @@ class Intern extends Employee {
       inquirer.prompt([
         {
           type: "input",
-          message: "What is school do you attend?",
+          message: "What school does the intern attend?",
           name: "school"
         }
       ])

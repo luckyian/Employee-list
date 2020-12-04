@@ -8,7 +8,7 @@ class Employee {
       inquirer.prompt(
         {
           type: "input",
-          message: "What is your name?",
+          message: "What is the employee's name?",
           name: "name"
         }
 
@@ -26,7 +26,7 @@ class Employee {
       inquirer.prompt(
         {
           type: "input",
-          message: "What is your id?",
+          message: "What is the employee's id?",
           name: "id"
         }
 
@@ -42,7 +42,7 @@ class Employee {
       inquirer.prompt(
         {
           type: "input",
-          message: "What is your email?",
+          message: "What is the employee's email?",
           name: "email"
         }
 

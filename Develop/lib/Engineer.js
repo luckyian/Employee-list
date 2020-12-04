@@ -16,7 +16,7 @@ class Engineer extends Employee {
       inquirer.prompt([
         {
           type: "input",
-          message: "What is your github user name?",
+          message: "What is the engineer's github user name?",
           name: "github"
         }
       ])

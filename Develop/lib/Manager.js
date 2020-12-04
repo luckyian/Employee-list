@@ -13,7 +13,7 @@ class Manager extends Employee {
       inquirer.prompt([
       {
         type: "input",
-        message: "What is your office number?",
+        message: "What is the manager's office number?",
         name: "officeNumber"
       }
     ])
