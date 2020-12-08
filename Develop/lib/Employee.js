@@ -4,62 +4,21 @@ class Employee {
     this.name = name;
     this.id = id;
     this.email = email;
-    this.getName = function () {
-      inquirer.prompt(
-        {
-          type: "input",
-          message: "What is the employee's name?",
-          name: "name"
-        }
-
-      ).then(function (input) {
-        this.name = name;
-      }
-      )
-
-    }
-
-
-
-
-    this.getId = function () {
-      inquirer.prompt(
-        {
-          type: "input",
-          message: "What is the employee's id?",
-          name: "id"
-        }
-
-      ).then(function (input) {
-        this.id = id;
-      }
-      )
-
-    }
-
-
-    this.getEmail = function () {
-      inquirer.prompt(
-        {
-          type: "input",
-          message: "What is the employee's email?",
-          name: "email"
-        }
-
-      ).then(function (data) {
-        this.email = email;
-      }
-      )
-
-    }
-
-
+  }
+  getName() {
+    return this.name;
   }
 
+  getId() {
+    return this.id;
+  }
 
+  getEmail() {
+    return this.email;
+  }
 
-
-
-
-} 
+  getRole() {
+    return "Employee";
+  }
+}
 module.exports = Employee;

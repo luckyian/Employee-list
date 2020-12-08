@@ -2,31 +2,16 @@
 const Employee = require("./Employee");
 
 class Engineer extends Employee {
-  constructor(github) {
-
-    this.github = github;
-    this.name = name;
-    this.id = id;
-    this.email = email;
-
+  constructor(name, id, email, gitHub) {
     super(name, id, email);
-    
-    
-    this.getRole = function () {
-      inquirer.prompt([
-        {
-          type: "input",
-          message: "What is the engineer's github user name?",
-          name: "github"
-        }
-      ])
-        .then(function (EngineerData) {
-          const engineer = new Engineer(data.name, data.id, data.email, EngineerData.github);
-          teamMember.push(engineer);
-          
-        })
-
-    };
-  };
+    this.gitHub = gitHub;
+  }
+  getRole() {
+    return "Manager";
+  }
+  getgitHub() {
+    return this.gitHub;
+  }
 }
+
 module.exports = Engineer;
