@@ -33,7 +33,6 @@ function manager(managerInfo) {
     .then(function (managerData) {
       const manager = new Manager(managerInfo.name, managerInfo.id, managerInfo.email, managerData.officeNumber);
       teamMember.push(manager);
-      console.log("manager", teamMember);
       getRole();
     })
 
