@@ -26,7 +26,7 @@ function manager(managerInfo) {
   inquirer.prompt([
     {
       type: "input",
-      message: "What is your office number?",
+      message: "What is the manager's office number?",
       name: "officeNumber"
     }
   ])
@@ -43,7 +43,7 @@ function intern(internInfo) {
   inquirer.prompt([
     {
       type: "input",
-      message: "What is school do you attend?",
+      message: "What school does the intern attend?",
       name: "school"
     }
   ])
@@ -60,7 +60,7 @@ function engineer(engineerInfo) {
   inquirer.prompt(
     {
       type: "input",
-      message: "What is your github user name?",
+      message: "What is the engineer's github user name?",
       name: "github"
     }
   )
