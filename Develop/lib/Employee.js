@@ -1,4 +1,4 @@
-// TODO: Write code to define and export the Employee class
+// Constructor function used for basic employee information
 class Employee {
   constructor(name, id, email) {
     this.name = name;
