@@ -11,6 +11,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const teamMember = [];
 
+
+// Initial Function to start app using inquirer prompts
 function init() {
   getRole();
 
@@ -19,9 +21,8 @@ function init() {
 
 
 
-
+// Function to be used if manager is selected from getRole inquirer prompts
 function manager(managerInfo) {
-  console.log(managerInfo);
   inquirer.prompt([
     {
       type: "input",
@@ -38,6 +39,7 @@ function manager(managerInfo) {
 
 }
 
+// Function to be used if intern is selected from getRole inquirer prompts
 function intern(internInfo) {
   inquirer.prompt([
     {
@@ -53,6 +55,8 @@ function intern(internInfo) {
     })
 
 }
+
+// Function to be used if engineer is selected from getRole inquirer prompts
 function engineer(engineerInfo) {
   inquirer.prompt(
     {
@@ -68,7 +72,7 @@ function engineer(engineerInfo) {
     })
 }
 
-
+// Function to gather basic employee information to be used later
 function newEmp(roleInfo) {
   
   inquirer.prompt([
@@ -88,10 +92,10 @@ function newEmp(roleInfo) {
       name: "email"
     }
 
-    // Add the rest of the questions related to employee
+
   ])
     .then(function (data) {
-      console.log(roleInfo);
+     
       if (roleInfo.role === "Manager") {
         manager(data);
 
@@ -110,7 +114,7 @@ function newEmp(roleInfo) {
     })
 }
 
-
+// Function to format questions for employee based on selected role choosen through inquirer list choice
 function getRole() {
 
   inquirer.prompt(
@@ -144,9 +148,8 @@ function getRole() {
   })
 }
 
-
+// Function to take gathered information and create html file using the htmlRender.js
 function output() {
-  console.log(teamMember);
   fs.writeFile(outputPath, render(teamMember), function (err) {
 
     if (err) {
@@ -160,31 +163,6 @@ function output() {
 
 }
 
-
-
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
+// Function call to start app
 
 init();
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work!
