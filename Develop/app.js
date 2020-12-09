@@ -14,17 +14,6 @@ const teamMember = [];
 function init() {
   getRole();
 
-  // inquirer.prompt(
-  //   {
-  //     type: "input",
-  //     message: "What is your team manager's name?",
-  //     name: "firstManager"
-
-  //   }
-
-  // ).then(function (data) {
-  //   newEmp(data);
-  // })
 }
 
 
