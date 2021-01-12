@@ -19,7 +19,7 @@
       4. node.js
  
   > ## **Usage**
-  ### !["Employee-List"](https://drive.google.com/file/d/1541ppZBJAlGjb9EltwEdrMjmN7tZ-njg/view)
+  ### !["Employee-List"](./Assets/team-list.gif)
 
   > ## **License**
   ### I have choosen the Unlicense/Other license.  For further information on licenses please visit [Choose a License](https://choosealicense.com/)
